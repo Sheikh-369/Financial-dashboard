@@ -38,9 +38,3 @@ const Topbar = () => {
 };
 
 export default Topbar;
-
-
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Sheikh-369/Financial-dashboard.git
-git push -u origin main
