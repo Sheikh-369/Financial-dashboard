@@ -46,10 +46,10 @@ export default function Sidebar() {
       </nav>
 
       <div className="mt-auto pt-6 space-y-4">
-        <button className="w-full bg-primary text-on-primary py-3 rounded-md font-bold text-sm tracking-tight flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
-          <span className="material-symbols-outlined text-sm">add</span>
-          New Entry
-        </button>
+        <button className="w-full bg-[#0F172A] text-white py-3.5 rounded-xl font-bold text-sm tracking-tight flex items-center justify-center gap-2 hover:bg-black transition-all shadow-md active:scale-[0.98]">
+    <span className="material-symbols-outlined text-lg">add</span>
+    New Entry
+  </button>
         <Link 
           href="/help" 
           className="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-slate-700 font-medium text-sm transition-colors"

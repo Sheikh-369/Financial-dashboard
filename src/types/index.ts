@@ -17,3 +17,16 @@ export interface NavItem {
   href: string;
   icon: string;
 }
+
+export interface ChartData {
+  label: string;
+  val: number;
+}
+
+export type ViewType = 'weekly' | 'monthly';
+
+export interface Category {
+  name: string;
+  percent: string;
+  color: string;
+}
