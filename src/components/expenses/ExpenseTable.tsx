@@ -1,3 +1,6 @@
+"use client";
+import React from 'react';
+
 const disbursements = [
   { vendor: 'Amazon Web Services', purpose: 'Infrastructure Hosting', cat: 'Technology', date: 'Oct 24, 2026', amount: '$12,450.00', status: 'Cleared', icon: 'cloud' },
   { vendor: 'Meta Platforms Inc.', purpose: 'Q4 Ad Campaigns', cat: 'Marketing', date: 'Oct 22, 2026', amount: '$4,200.00', status: 'Cleared', icon: 'campaign' },
@@ -7,46 +10,53 @@ const disbursements = [
 
 export default function ExpenseTable() {
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-      <div className="p-8 flex items-center justify-between border-b border-slate-50">
-        <h4 className="text-xl font-black tracking-tight text-slate-900">Recent Disbursements</h4>
-        <div className="flex gap-2">
-          <button className="px-4 py-2 text-[10px] font-black uppercase tracking-widest bg-slate-900 text-white rounded-lg">All</button>
-          <button className="px-4 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-black">Pending</button>
+    <div className="bg-white dark:bg-[#132335] rounded-[2.5rem] shadow-sm border border-slate-100 dark:border-white/5 overflow-hidden transition-all duration-500">
+      <div className="p-8 flex items-center justify-between border-b border-slate-50 dark:border-white/5">
+        <h4 className="text-xl font-black tracking-tight text-slate-900 dark:text-white">Recent Disbursements</h4>
+        <div className="flex gap-3">
+          <button className="px-5 py-2 text-[10px] font-black uppercase tracking-widest bg-slate-900 dark:bg-white text-white dark:text-[#0B1C30] rounded-xl transition-all active:scale-95 shadow-lg shadow-black/5">
+            All
+          </button>
+          <button className="px-5 py-2 text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 hover:text-black dark:hover:text-white transition-colors">
+            Pending
+          </button>
         </div>
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-left">
           <thead>
-            <tr className="bg-slate-50/50">
-              <th className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Vendor / Purpose</th>
-              <th className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Category</th>
-              <th className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Date</th>
-              <th className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right">Amount</th>
-              <th className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400 text-center">Status</th>
+            <tr className="bg-slate-50/50 dark:bg-white/5 transition-colors">
+              <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Vendor / Purpose</th>
+              <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Category</th>
+              <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Date</th>
+              <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 text-right">Amount</th>
+              <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 text-center">Status</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-50">
+          <tbody className="divide-y divide-slate-50 dark:divide-white/5">
             {disbursements.map((item, i) => (
-              <tr key={i} className="hover:bg-slate-50/30 transition-colors group">
-                <td className="px-8 py-5">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100">
-                      <span className="material-symbols-outlined text-slate-400 group-hover:text-black transition-colors">{item.icon}</span>
+              <tr key={i} className="hover:bg-slate-50/30 dark:hover:bg-white/5 transition-colors group">
+                <td className="px-8 py-6">
+                  <div className="flex items-center gap-5">
+                    <div className="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-[#0B1C30] flex items-center justify-center border border-slate-100 dark:border-white/10 transition-colors">
+                      <span className="material-symbols-outlined text-slate-400 group-hover:text-black dark:group-hover:text-white transition-colors">
+                        {item.icon}
+                      </span>
                     </div>
                     <div>
-                      <p className="font-bold text-sm text-slate-900">{item.vendor}</p>
-                      <p className="text-[10px] text-slate-500 font-medium">{item.purpose}</p>
+                      <p className="font-black text-sm text-slate-900 dark:text-white transition-colors">{item.vendor}</p>
+                      <p className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-tight mt-0.5">{item.purpose}</p>
                     </div>
                   </div>
                 </td>
-                <td className="px-8 py-5 text-xs font-bold text-slate-600">{item.cat}</td>
-                <td className="px-8 py-5 text-xs font-medium text-slate-400">{item.date}</td>
-                <td className="px-8 py-5 text-sm font-black text-right text-slate-900">{item.amount}</td>
-                <td className="px-8 py-5 text-center">
-                  <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-tighter ${
-                    item.status === 'Cleared' ? 'bg-emerald-50 text-emerald-600' : 
-                    item.status === 'Pending' ? 'bg-amber-50 text-amber-600' : 'bg-rose-50 text-rose-600'
+                <td className="px-8 py-6 text-[11px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">{item.cat}</td>
+                <td className="px-8 py-6 text-xs font-bold text-slate-400 dark:text-slate-500">{item.date}</td>
+                <td className="px-8 py-6 text-sm font-black text-right text-slate-900 dark:text-white">{item.amount}</td>
+                <td className="px-8 py-6 text-center">
+                  <span className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-widest ${
+                    item.status === 'Cleared' ? 'bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' : 
+                    item.status === 'Pending' ? 'bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400' : 
+                    'bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400'
                   }`}>
                     {item.status}
                   </span>

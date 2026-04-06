@@ -1,4 +1,3 @@
-// src/components/sales/SalesTrendChart.tsx
 "use client";
 import React from 'react';
 
@@ -14,41 +13,44 @@ const data = [
 
 export default function SalesTrendChart() {
   return (
-    <div className="bg-slate-50 p-8 rounded-xl border border-slate-100/50 flex flex-col h-[450px]">
+    <div className="bg-white dark:bg-[#132335] p-8 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm flex flex-col h-[480px] transition-all duration-500">
       <div className="flex justify-between items-start mb-10">
         <div>
-          <h4 className="text-xl font-extrabold tracking-tight text-slate-900">Monthly Sales Volume</h4>
-          <p className="text-xs text-slate-500 font-medium">Regional performance distribution (FY26)</p>
+          <h4 className="text-xl font-black tracking-tight text-slate-900 dark:text-white">Monthly Sales Volume</h4>
+          <p className="text-[11px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest mt-1">Regional performance distribution (FY26)</p>
         </div>
-        <div className="flex gap-4">
+        
+        {/* Legend */}
+        <div className="flex gap-6">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-black"></span>
-            <span className="text-[10px] font-bold text-slate-400 tracking-widest">DOMESTIC</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-black dark:bg-white shadow-[0_0_8px_rgba(255,255,255,0.1)]"></span>
+            <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-[0.2em]">DOMESTIC</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-300"></span>
-            <span className="text-[10px] font-bold text-slate-400 tracking-widest">GLOBAL</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-white/10"></span>
+            <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 tracking-[0.2em]">GLOBAL</span>
           </div>
         </div>
       </div>
 
       {/* Graph Area */}
-      <div className="flex-1 flex items-end justify-between gap-3 md:gap-4 px-2 pb-2">
+      <div className="flex-1 flex items-end justify-between gap-3 md:gap-6 px-2 pb-2">
         {data.map((item) => (
           <div key={item.month} className="flex-1 flex flex-col items-center group h-full justify-end">
-            <div className="w-full flex flex-col justify-end h-full gap-1">
-              {/* Global Bar (Top) */}
+            <div className="w-full flex flex-col justify-end h-full gap-1.5">
+              {/* Global Bar (Top Layer) */}
               <div 
-                className="w-full bg-slate-200 group-hover:bg-slate-300 transition-all duration-500 rounded-sm" 
+                className="w-full bg-slate-100 dark:bg-white/5 group-hover:bg-slate-200 dark:group-hover:bg-white/10 transition-all duration-500 rounded-sm" 
                 style={{ height: `${item.global}%` }}
               />
-              {/* Domestic Bar (Bottom) */}
+              {/* Domestic Bar (Core Layer) */}
               <div 
-                className="w-full bg-black rounded-sm transition-all duration-500" 
+                className="w-full bg-black dark:bg-white rounded-sm transition-all duration-500 shadow-sm" 
                 style={{ height: `${item.domestic}%` }}
               />
             </div>
-            <span className="text-[10px] font-bold text-slate-400 mt-5 uppercase tracking-widest">
+            {/* Label */}
+            <span className="text-[10px] font-black text-slate-400 dark:text-slate-500 mt-6 uppercase tracking-[0.2em]">
               {item.month}
             </span>
           </div>

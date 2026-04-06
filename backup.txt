@@ -1,24 +1,33 @@
 @import "tailwindcss";
 
-/* 1. Tell Tailwind v4 to use the .dark class on the html tag */
-@variant dark (&:where(.dark, .dark *));
-
 :root {
+  /* Light Authority Colors */
+  --surface: #f8f9ff;
+  --surface-container: #e5eeff;
+  --surface-container-low: #eff4ff;
+  --surface-container-lowest: #ffffff;
+  --on-surface: #0b1c30;
+  --on-surface-variant: #45464d;
+  --primary: #000000;
+  --on-primary: #ffffff;
+  
   --foreground-rgb: 11, 28, 48;
   --background-rgb: 248, 249, 255;
-  
-  /* Financial Authority Palette */
-  --surface: #f8f9ff;
-  --on-surface: #0b1c30;
 }
 
+/* Deep Ledger Dark Mode */
 .dark {
+  --surface: #0b1c30;
+  --surface-container: #1a2b3e;
+  --surface-container-low: #132335;
+  --surface-container-lowest: #081421;
+  --on-surface: #f8f9ff;
+  --on-surface-variant: #c6c6cd;
+  --primary: #ffffff;
+  --on-primary: #000000;
+
   --foreground-rgb: 248, 249, 255;
   --background-rgb: 11, 28, 48;
-  
-  /* Deep Ledger Palette */
-  --surface: #0b1c30;
-  --on-surface: #f8f9ff;
 }
 
 body {
@@ -27,7 +36,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Rest of your existing CSS... */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   vertical-align: middle;
