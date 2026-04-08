@@ -13,12 +13,37 @@ const navItems = [
   { name: "Settings", href: "/settings", icon: "settings" },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const pathname = usePathname();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <aside className="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 z-50 bg-[#F1F5F9] dark:bg-[#0B1C30] p-6 border-r border-slate-200 dark:border-white/5 transition-colors duration-500">
+    <>
+    {/* 1. THE DIMMER: This makes the rest of the screen dark when the menu is open on mobile */}
+    {isOpen && (
+      <div 
+        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden" 
+        onClick={onClose} 
+      />
+    )}
+      <aside className={`
+      /* 2. BASE STYLES: Same as before */
+      flex flex-col h-screen w-72 fixed left-0 top-0 z-50 
+      bg-[#F1F5F9] dark:bg-[#0B1C30] p-6 border-r border-slate-200 
+      dark:border-white/5 transition-all duration-300 ease-in-out
+
+      /* 3. MOBILE SLIDE LOGIC: 
+         If isOpen is false, we push it off-screen (-translate-x-full).
+         If isOpen is true, we bring it to the front (translate-x-0).
+      */
+      ${isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"}
+
+      /* 4. DESKTOP LOGIC:
+         On large screens (lg), we reset it to its normal position 
+         no matter what the mobile state is.
+      */
+      lg:translate-x-0
+    `}>
       <div className="mb-10">
         <h2 className="font-headline font-black text-2xl tracking-tighter text-[#0F172A] dark:text-white">
           The Ledger
@@ -73,5 +98,7 @@ export default function Sidebar() {
       />
       </div>
     </aside>
+    </>
+    
   );
 }

@@ -1,9 +1,16 @@
 // src/components/layout/Topbar.tsx
 
-const Topbar = () => {
+const Topbar = ({ onOpen }: { onOpen: () => void }) => {
   return (
     <header className="flex justify-between items-center w-full px-8 h-16 sticky top-0 bg-surface/80 backdrop-blur-xl z-40">
       <div className="flex items-center gap-4">
+        {/* Hembueger menu */}
+        <button 
+          onClick={onOpen} // This runs the instruction from the Layout
+          className="lg:hidden p-2 -ml-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors"
+        >
+          <span className="material-symbols-outlined">menu</span>
+        </button>
         <h1 className="font-headline font-semibold tracking-tight text-xl text-on-surface">
           Dashboard Overview
         </h1>
