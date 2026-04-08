@@ -9,8 +9,8 @@ const exports = [
 
 export default function RecentExports() {
   return (
-    <div className="bg-white dark:bg-[#132335] rounded-[2.5rem] p-10 border border-slate-100 dark:border-white/5 shadow-sm h-full transition-all duration-500">
-      <div className="flex justify-between items-center mb-10 px-2">
+    <div className="bg-white dark:bg-[#132335] rounded-[2.5rem] p-5 md:p-10 border border-slate-100 dark:border-white/5 shadow-sm h-full transition-all duration-500">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 px-2 gap-4">
         <h4 className="text-[10px] font-black tracking-[0.4em] uppercase text-slate-400 dark:text-slate-500 transition-colors">
           Recent Exports
         </h4>
@@ -23,28 +23,28 @@ export default function RecentExports() {
         {exports.map((file, i) => (
           <div 
             key={i} 
-            className="group flex items-center justify-between p-5 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all duration-300 cursor-default"
+            className="group flex items-center justify-between p-3 md:p-5 rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all duration-300 cursor-default"
           >
-            <div className="flex items-center gap-6">
-              {/* File Icon Container */}
-              <div className="w-12 h-12 bg-slate-50 dark:bg-[#0B1C30] rounded-xl flex items-center justify-center border border-slate-100 dark:border-white/10 group-hover:bg-white dark:group-hover:bg-white group-hover:shadow-sm transition-all duration-300">
-                <span className="material-symbols-outlined text-slate-400 text-xl group-hover:text-black dark:group-hover:text-[#0B1C30] transition-colors">
+            <div className="flex items-center gap-3 md:gap-6 min-w-0">
+              {/* File Icon Container - Scaled for mobile */}
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-slate-50 dark:bg-[#0B1C30] rounded-xl flex-shrink-0 flex items-center justify-center border border-slate-100 dark:border-white/10 group-hover:bg-white dark:group-hover:bg-white group-hover:shadow-sm transition-all duration-300">
+                <span className="material-symbols-outlined text-slate-400 text-lg group-hover:text-black dark:group-hover:text-[#0B1C30] transition-colors">
                   {file.icon}
                 </span>
               </div>
               
-              <div>
-                <p className="font-black text-sm text-slate-900 dark:text-white transition-colors tracking-tight">
+              <div className="min-w-0">
+                <p className="font-black text-sm text-slate-900 dark:text-white transition-colors tracking-tight truncate">
                   {file.name}
                 </p>
-                <p className="text-[10px] text-slate-400 dark:text-slate-500 font-black uppercase tracking-widest mt-1">
+                <p className="text-[10px] text-slate-400 dark:text-slate-500 font-black uppercase tracking-widest mt-1 truncate max-w-[140px] xs:max-w-[200px] md:max-w-none">
                   {file.meta}
                 </p>
               </div>
             </div>
             
-            <div className="flex items-center gap-10">
-              <span className="text-[11px] font-black uppercase tracking-tighter text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors">
+            <div className="flex items-center gap-2 md:gap-10 flex-shrink-0">
+              <span className="hidden sm:inline-block text-[11px] font-black uppercase tracking-tighter text-slate-300 dark:text-slate-600 group-hover:text-slate-500 dark:group-hover:text-slate-400 transition-colors">
                 {file.date}
               </span>
               

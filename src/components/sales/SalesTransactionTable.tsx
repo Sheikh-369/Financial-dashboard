@@ -11,14 +11,17 @@ const transactions = [
 export default function SalesTransactionTable() {
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between px-2">
-        <h3 className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white transition-colors">Recent Transactions</h3>
-        <div className="flex gap-3">
-          <button className="flex items-center bg-white dark:bg-[#132335] border border-slate-200 dark:border-white/5 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 transition-all shadow-sm">
+      {/* Header section: Stacks on mobile, side-by-side on tablet+ */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-2">
+        <h3 className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white transition-colors">
+          Recent Transactions
+        </h3>
+        <div className="flex gap-2">
+          <button className="flex-1 sm:flex-none flex items-center justify-center bg-white dark:bg-[#132335] border border-slate-200 dark:border-white/5 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 transition-all shadow-sm">
             <span className="material-symbols-outlined text-sm mr-2">filter_list</span>
             Filter
           </button>
-          <button className="flex items-center bg-white dark:bg-[#132335] border border-slate-200 dark:border-white/5 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 transition-all shadow-sm">
+          <button className="flex-1 sm:flex-none flex items-center justify-center bg-white dark:bg-[#132335] border border-slate-200 dark:border-white/5 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-white/10 transition-all shadow-sm">
             Sort: Newest
           </button>
         </div>
@@ -29,27 +32,43 @@ export default function SalesTransactionTable() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="bg-slate-50/50 dark:bg-white/5 border-b border-slate-100 dark:border-white/5">
-                <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Transaction ID</th>
-                <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Client Entity</th>
-                <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Date</th>
-                <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Status</th>
-                <th className="px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 text-right">Amount</th>
+                {/* ID: Hidden on mobile, shown on Medium screens+ */}
+                <th className="hidden md:table-cell px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Transaction ID</th>
+                
+                {/* Client: Always shown, padding shrinks on mobile */}
+                <th className="px-5 md:px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Client Entity</th>
+                
+                {/* Date: Hidden on mobile, shown on Large screens+ */}
+                <th className="hidden lg:table-cell px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Date</th>
+                
+                <th className="px-5 md:px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">Status</th>
+                
+                <th className="px-5 md:px-8 py-5 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 text-right">Amount</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-white/5">
               {transactions.map((txn) => (
                 <tr key={txn.id} className="hover:bg-slate-50/50 dark:hover:bg-white/5 transition-colors group">
-                  <td className="px-8 py-5 text-xs font-bold font-mono text-slate-500 dark:text-slate-400">{txn.id}</td>
-                  <td className="px-8 py-5">
+                  {/* ID Column */}
+                  <td className="hidden md:table-cell px-8 py-5 text-xs font-bold font-mono text-slate-500 dark:text-slate-400">{txn.id}</td>
+                  
+                  {/* Client Column */}
+                  <td className="px-5 md:px-8 py-5">
                     <span className="text-sm font-black text-slate-900 dark:text-white group-hover:underline underline-offset-4 decoration-2">{txn.client}</span>
                   </td>
-                  <td className="px-8 py-5 text-[11px] font-bold uppercase tracking-tight text-slate-400 dark:text-slate-500">{txn.date}</td>
-                  <td className="px-8 py-5">
+                  
+                  {/* Date Column */}
+                  <td className="hidden lg:table-cell px-8 py-5 text-[11px] font-bold uppercase tracking-tight text-slate-400 dark:text-slate-500">{txn.date}</td>
+                  
+                  {/* Status Column */}
+                  <td className="px-5 md:px-8 py-5">
                     <span className={`inline-flex items-center px-3 py-1 rounded-full text-[9px] font-black tracking-widest uppercase ${getStatusStyles(txn.status)}`}>
                       {txn.status}
                     </span>
                   </td>
-                  <td className="px-8 py-5 text-sm font-black text-right text-slate-900 dark:text-white">
+                  
+                  {/* Amount Column */}
+                  <td className="px-5 md:px-8 py-5 text-sm font-black text-right text-slate-900 dark:text-white">
                     {txn.amount}
                   </td>
                 </tr>

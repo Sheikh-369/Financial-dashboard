@@ -6,11 +6,10 @@ import SalesTrendChart from "@/src/components/sales/SalesTrendChart";
 
 export default function SalesPage() {
   return (
-    <div className="p-8 max-w-7xl mx-auto space-y-10 animate-in fade-in duration-700">
+    <div className="p-4 md:p-8 max-w-7xl mx-auto space-y-10 animate-in fade-in duration-700">
       
       {/* 1. Page Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-        <div>
+        <div className="flex flex-wrap gap-2">        <div>
           <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 transition-colors">Performance Ledger</span>
           <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white transition-colors">Sales Overview</h2>
         </div>
@@ -29,12 +28,12 @@ export default function SalesPage() {
       </div>
 
       {/* 2. Bento Grid Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Main Revenue Card */}
         <div className="md:col-span-2 bg-white dark:bg-[#132335] p-8 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm flex flex-col justify-between min-h-[220px] transition-all">
           <div>
-            <p className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest text-[10px]">Gross Sales Revenue</p>
-            <h3 className="text-5xl font-black tracking-tighter mt-4 text-slate-900 dark:text-white">$1,284,500.00</h3>
+            <p className="text-3xl font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest text-[10px]">Gross Sales Revenue</p>
+            <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tighter mt-4 text-slate-900 dark:text-white">$1,284,500.00</h3>
           </div>
           <div className="flex items-center gap-2 mt-6">
             <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-[10px] font-black rounded-full transition-colors">+12.4%</span>

@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="flex min-h-screen">
             <Sidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)}/>
-            <div className="flex-1 ml-0 lg:ml-72 flex flex-col transition-all duration-300">
+            <div className="flex-1 flex flex-col min-w-0 lg:ml-72 transition-all duration-300">
               <Topbar onOpen={() => setIsSidebarOpen(true)}/>
               <main className="p-4 md:p-10 pb-24">
                 {children}
