@@ -59,65 +59,142 @@
 // }
 
 //2nd
+// "use client";
+
+// export default function BudgetSummary() {
+//   return (
+//     <div className="bg-white dark:bg-[#132335] p-6 md:p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm relative overflow-hidden h-full flex flex-col justify-between transition-all duration-500">
+      
+//       {/* Status Badge - Adjusted position for mobile */}
+//       <div className="flex justify-end lg:absolute lg:top-0 lg:right-0 lg:p-8 mb-6 lg:mb-0">
+//         <span className="px-4 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full text-[9px] md:text-[10px] font-black tracking-[0.2em] uppercase transition-colors">
+//           Under Budget
+//         </span>
+//       </div>
+      
+//       <div>
+//         <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-4 font-black transition-colors">Monthly Allocation</p>
+        
+//         {/* Responsive Headline: Large on desktop, fits on mobile */}
+//         <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white mb-8 lg:mb-10 transition-colors">
+//           $142,850.00
+//         </h3>
+        
+//         <div className="space-y-8 lg:space-y-10 max-w-md">
+//           {/* Burn Rate Section */}
+//           <div className="space-y-4">
+//             <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
+//               <span>Quarterly Burn Rate</span>
+//               <span className="text-slate-900 dark:text-white transition-colors">64%</span>
+//             </div>
+//             <div className="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden transition-colors">
+//               <div 
+//                 className="bg-black dark:bg-white h-full transition-all duration-1000 ease-out shadow-[0_0_12px_rgba(255,255,255,0.05)]" 
+//                 style={{ width: '64%' }}
+//               ></div>
+//             </div>
+//           </div>
+
+//           {/* Metrics Grid - Fixed gap for mobile */}
+//           <div className="flex flex-col sm:flex-row gap-8 lg:gap-16">
+//             <div>
+//               <p className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-2 transition-colors">Available</p>
+//               <p className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white transition-colors">$51,426.00</p>
+//             </div>
+//             <div>
+//               <p className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-2 transition-colors">Overrun</p>
+//               <p className="text-2xl lg:text-3xl font-black text-rose-500 transition-colors">None</p>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* Action Footer - Stacks on mobile */}
+//       <div className="mt-12 lg:mt-16 flex flex-col sm:flex-row gap-4">
+//         <button className="w-full sm:w-auto bg-black dark:bg-white text-white dark:text-[#0B1C30] px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-800 dark:hover:bg-slate-200 transition-all active:scale-[0.98] shadow-lg shadow-black/5">
+//           Download Ledger
+//         </button>
+//         <button className="w-full sm:w-auto bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-400 px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest border border-slate-200/50 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-white/10 transition-all active:scale-[0.98]">
+//           Review Policy
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
+
+//3rd
 "use client";
+import { useState } from "react";
+import { LedgerModal, PolicyModal } from "../modals/SummaryModals";
 
 export default function BudgetSummary() {
-  return (
-    <div className="bg-white dark:bg-[#132335] p-6 md:p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm relative overflow-hidden h-full flex flex-col justify-between transition-all duration-500">
-      
-      {/* Status Badge - Adjusted position for mobile */}
-      <div className="flex justify-end lg:absolute lg:top-0 lg:right-0 lg:p-8 mb-6 lg:mb-0">
-        <span className="px-4 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full text-[9px] md:text-[10px] font-black tracking-[0.2em] uppercase transition-colors">
-          Under Budget
-        </span>
-      </div>
-      
-      <div>
-        <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-4 font-black transition-colors">Monthly Allocation</p>
-        
-        {/* Responsive Headline: Large on desktop, fits on mobile */}
-        <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white mb-8 lg:mb-10 transition-colors">
-          $142,850.00
-        </h3>
-        
-        <div className="space-y-8 lg:space-y-10 max-w-md">
-          {/* Burn Rate Section */}
-          <div className="space-y-4">
-            <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
-              <span>Quarterly Burn Rate</span>
-              <span className="text-slate-900 dark:text-white transition-colors">64%</span>
-            </div>
-            <div className="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden transition-colors">
-              <div 
-                className="bg-black dark:bg-white h-full transition-all duration-1000 ease-out shadow-[0_0_12px_rgba(255,255,255,0.05)]" 
-                style={{ width: '64%' }}
-              ></div>
-            </div>
-          </div>
+  const [activeModal, setActiveModal] = useState<'ledger' | 'policy' | null>(null);
 
-          {/* Metrics Grid - Fixed gap for mobile */}
-          <div className="flex flex-col sm:flex-row gap-8 lg:gap-16">
-            <div>
-              <p className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-2 transition-colors">Available</p>
-              <p className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white transition-colors">$51,426.00</p>
+  return (
+    <>
+      <div className="bg-white dark:bg-[#132335] p-6 md:p-10 rounded-[2.5rem] border border-slate-100 dark:border-white/5 shadow-sm relative overflow-hidden h-full flex flex-col justify-between transition-all duration-500">
+        
+        {/* Status Badge */}
+        <div className="flex justify-end lg:absolute lg:top-0 lg:right-0 lg:p-8 mb-6 lg:mb-0">
+          <span className="px-4 py-1.5 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-full text-[9px] md:text-[10px] font-black tracking-[0.2em] uppercase transition-colors">
+            Under Budget
+          </span>
+        </div>
+        
+        <div>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-4 font-black transition-colors">Monthly Allocation</p>
+          
+          <h3 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-slate-900 dark:text-white mb-8 lg:mb-10 transition-colors">
+            $142,850.00
+          </h3>
+          
+          <div className="space-y-8 lg:space-y-10 max-w-md">
+            <div className="space-y-4">
+              <div className="flex justify-between text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 dark:text-slate-500">
+                <span>Quarterly Burn Rate</span>
+                <span className="text-slate-900 dark:text-white transition-colors">64%</span>
+              </div>
+              <div className="w-full h-3 bg-slate-100 dark:bg-white/5 rounded-full overflow-hidden transition-colors">
+                <div 
+                  className="bg-black dark:bg-white h-full transition-all duration-1000 ease-out shadow-[0_0_12px_rgba(255,255,255,0.05)]" 
+                  style={{ width: '64%' }}
+                ></div>
+              </div>
             </div>
-            <div>
-              <p className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-2 transition-colors">Overrun</p>
-              <p className="text-2xl lg:text-3xl font-black text-rose-500 transition-colors">None</p>
+
+            <div className="flex flex-col sm:flex-row gap-8 lg:gap-16">
+              <div>
+                <p className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-2 transition-colors">Available</p>
+                <p className="text-2xl lg:text-3xl font-black text-slate-900 dark:text-white transition-colors">$51,426.00</p>
+              </div>
+              <div>
+                <p className="text-[10px] uppercase font-black tracking-[0.2em] text-slate-400 dark:text-slate-500 mb-2 transition-colors">Overrun</p>
+                <p className="text-2xl lg:text-3xl font-black text-rose-500 transition-colors">None</p>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Action Footer */}
+        <div className="mt-12 lg:mt-16 flex flex-col sm:flex-row gap-4">
+          <button 
+            onClick={() => setActiveModal('ledger')}
+            className="w-full sm:w-auto bg-black dark:bg-white text-white dark:text-[#0B1C30] px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-800 dark:hover:bg-slate-200 transition-all active:scale-[0.98] shadow-lg shadow-black/5"
+          >
+            Download Ledger
+          </button>
+          <button 
+            onClick={() => setActiveModal('policy')}
+            className="w-full sm:w-auto bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-400 px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest border border-slate-200/50 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-white/10 transition-all active:scale-[0.98]"
+          >
+            Review Policy
+          </button>
+        </div>
       </div>
 
-      {/* Action Footer - Stacks on mobile */}
-      <div className="mt-12 lg:mt-16 flex flex-col sm:flex-row gap-4">
-        <button className="w-full sm:w-auto bg-black dark:bg-white text-white dark:text-[#0B1C30] px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-slate-800 dark:hover:bg-slate-200 transition-all active:scale-[0.98] shadow-lg shadow-black/5">
-          Download Ledger
-        </button>
-        <button className="w-full sm:w-auto bg-slate-50 dark:bg-white/5 text-slate-600 dark:text-slate-400 px-8 py-4 rounded-xl font-black text-[10px] uppercase tracking-widest border border-slate-200/50 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-white/10 transition-all active:scale-[0.98]">
-          Review Policy
-        </button>
-      </div>
-    </div>
+      {/* Render Modals based on State */}
+      {activeModal === 'ledger' && <LedgerModal onClose={() => setActiveModal(null)} />}
+      {activeModal === 'policy' && <PolicyModal onClose={() => setActiveModal(null)} />}
+    </>
   );
 }

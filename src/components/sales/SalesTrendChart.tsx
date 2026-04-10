@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 
 const data = [
   { month: 'JAN', domestic: 20, global: 40 },
