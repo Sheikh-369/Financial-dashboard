@@ -5,7 +5,7 @@ const Topbar = ({ onOpen }: { onOpen: () => void }) => {
         {/* Hembueger menu - Updated to xl:hidden to support iPad Pro */}
         <button 
           onClick={onOpen} // This runs the instruction from the Layout
-          className="xl:hidden p-2 -ml-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors"
+          className="xl:hidden bg-amber-950 p-2 -ml-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5 rounded-lg transition-colors"
         >
           <span className="material-symbols-outlined">menu</span>
         </button>
